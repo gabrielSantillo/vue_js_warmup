@@ -14,9 +14,8 @@
                 document.body.style.backgroundColor = `blue`
             },
 
-            changeToPink() {
-                let tag = document.querySelector(`.0`);
-                tag[`style`][`background`] = `pink`
+            changeToPink(details) {
+                details[`target`][`style`][`color`] = `pink`
             }
         },
 
@@ -27,17 +26,15 @@
                 let div_secret = document.querySelector(`div`);
                 for(let i = 0; i < this.secrets.length; i++) {
                     div_secret.insertAdjacentHTML(`beforeend`, `
-                        <p value="${i}">${this.secrets[i]}</p>
+                        <p class="secrets">${this.secrets[i]}</p>
                     `)
                 }
 
-                let tag_0_value = document.querySelector(`.0`).getAttribute(`value`);
-
-
-                if(tag_0_value === 0) {
-                    let tag = document.querySelector(`.0`);
-                    tag.addEventListener(`click`, this.changeToPink)
+                let secrets = document.getElementsByClassName(`secrets`)
+                for(let i = 0; i < secrets.length; i++) {
+                    secrets[i].addEventListener(`click`, this.changeToPink)
                 }
+
         },
 
         data() {
